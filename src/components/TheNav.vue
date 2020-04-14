@@ -10,7 +10,7 @@
       :class="{tilted: showSearchbarMobile}"
     />
     <h1 v-if="!showSearchbarMobile">PokéFinder</h1>
-    <TheHamburger />
+    <TheHamburger @click.native="showSidebar" />
     <TheSearchbarMobile @searchUpdated="searchUpdated" v-if="showSearchbarMobile" />
   </nav>
 </template>
@@ -35,6 +35,9 @@ export default {
   methods: {
     searchUpdated(search) {
       this.$emit("searchUpdated", search);
+    },
+    showSidebar() {
+      this.$emit("showSidebar");
     }
   },
   computed: {
@@ -50,8 +53,10 @@ export default {
 
       if (prevPos > currPos) {
         document.querySelector("#the-nav").style.top = "0";
+        document.querySelector("#the-sidebar").style.top = "64px";
       } else {
         document.querySelector("#the-nav").style.top = "-64px";
+        document.querySelector("#the-sidebar").style.top = "-240px";
       }
       prevPos = currPos;
     };
@@ -74,6 +79,7 @@ export default {
   position: fixed;
   box-shadow: 0 4px 6px #33333322;
   transition: top 200ms ease-in-out;
+  z-index: 1;
 }
 
 h1 {

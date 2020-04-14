@@ -18,10 +18,25 @@ import PokeCard from "./PokeCard.vue";
 export default {
   name: "TheContent",
   props: {
-    search: String
+    search: String,
+    searchStats: Array
   },
   components: {
     PokeCard
+  },
+  methods: {
+    statsMatch(poke) {
+      let match = true;
+      let arr = this.searchStats.slice().reverse();
+
+      for (let i = 0; i < 6; i++) {
+        if (poke.stats[i]["base_stat"] < parseInt(arr[i])) {
+          match = false;
+        }
+      }
+
+      return match;
+    }
   },
   asyncComputed: {
     async pokes() {
@@ -46,7 +61,7 @@ export default {
     pokesFiltered() {
       if (this.pokes) {
         return this.pokes.filter(poke => {
-          return poke.name.includes(this.search);
+          return poke.name.includes(this.search) && this.statsMatch(poke);
         });
       } else {
         return [];

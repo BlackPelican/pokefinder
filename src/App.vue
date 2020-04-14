@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <TheNav @searchUpdated="searchUpdated" />
-    <TheContent :search="search" />
-    <TheSidebar v-if="showSidebar" />
+    <TheNav @searchUpdated="searchUpdated" @showSidebar="showSidebar = !showSidebar" />
+    <TheContent :search="search" :searchStats="searchStats" />
+    <TheSidebar @searchStatsUpdated="searchStatsUpdated" v-if="showSidebar" />
   </div>
 </template>
 
@@ -21,12 +21,16 @@ export default {
   data: function() {
     return {
       search: "",
+      searchStats: [0, 0, 0, 0, 0, 0],
       showSidebar: false
     };
   },
   methods: {
     searchUpdated(search) {
       this.search = search;
+    },
+    searchStatsUpdated(searchStats) {
+      this.searchStats = searchStats;
     }
   }
 };
