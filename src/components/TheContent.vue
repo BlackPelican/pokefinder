@@ -44,7 +44,7 @@ export default {
 
       let result, json;
 
-      for (let i = 1; i <= 151; i++) {
+      for (let i = 1; i <= 251; i++) {
         result = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
 
         json = await result.json();
@@ -72,7 +72,13 @@ export default {
         return {
           name: poke.name,
           stats: poke.stats,
-          sprite: poke.sprites["front_default"]
+          //sprite: poke.sprites["front_default"]
+          sprite: poke.name.includes("-")
+            ? `https://projectpokemon.org/images/normal-sprite/${poke.name.replace(
+                "-",
+                "_"
+              )}.gif`
+            : `https://projectpokemon.org/images/normal-sprite/${poke.name}.gif`
         };
       });
     },

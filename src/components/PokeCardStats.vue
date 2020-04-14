@@ -54,7 +54,7 @@ export default {
 
 .stat__names {
   align-items: flex-end;
-  margin-right: 32px;
+  margin-right: 24px;
   font-size: 14px;
 }
 

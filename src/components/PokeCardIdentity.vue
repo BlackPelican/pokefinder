@@ -35,7 +35,7 @@ export default {
 .poke-card-image {
   border-radius: 50%;
   background: var(--c-background);
-  box-shadow: 0 4px 6px #33333322;
+  box-shadow: inset 0 4px 6px #33333311;
   height: 136px;
   width: 136px;
   display: flex;
@@ -44,8 +44,8 @@ export default {
 }
 
 .poke-card-image img {
-  height: 80%;
-  width: 80%;
+  max-height: 70%;
+  max-width: 70%;
 }
 
 .poke-card-name {
