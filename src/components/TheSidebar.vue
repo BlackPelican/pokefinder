@@ -48,27 +48,6 @@ export default {
 
       this.$emit("searchStatsUpdated", arr);
     }
-  },
-  created() {
-    let prevPos = window.pageYOffset;
-
-    window.onscroll = () => {
-      let currPos = window.pageYOffset;
-
-      if (
-        document.querySelector("#the-nav") &&
-        document.querySelector("#the-sidebar")
-      ) {
-        if (prevPos > currPos) {
-          document.querySelector("#the-nav").style.top = "0";
-          document.querySelector("#the-sidebar").style.top = "64px";
-        } else {
-          document.querySelector("#the-nav").style.top = "-64px";
-          document.querySelector("#the-sidebar").style.top = "-240px";
-        }
-      }
-      prevPos = currPos;
-    };
   }
 };
 </script>

@@ -32,6 +32,30 @@ export default {
     searchStatsUpdated(searchStats) {
       this.searchStats = searchStats;
     }
+  },
+  created() {
+    let prevPos = window.pageYOffset;
+
+    window.onscroll = () => {
+      let currPos = window.pageYOffset;
+
+      if (document.getElementById("the-nav")) {
+        if (prevPos > currPos) {
+          document.getElementById("the-nav").style.top = "0";
+        } else {
+          document.getElementById("the-nav").style.top = "-64px";
+        }
+      }
+
+      if (document.getElementById("the-sidebar")) {
+        if (prevPos > currPos) {
+          document.getElementById("the-sidebar").style.top = "64px";
+        } else {
+          document.getElementById("the-sidebar").style.top = "-240px";
+        }
+      }
+      prevPos = currPos;
+    };
   }
 };
 </script>
