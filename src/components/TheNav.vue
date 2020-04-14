@@ -41,6 +41,20 @@ export default {
     showSearchbar() {
       return window.innerWidth > 800;
     }
+  },
+  mounted() {
+    let prevPos = window.pageYOffset;
+
+    window.onscroll = () => {
+      let currPos = window.pageYOffset;
+
+      if (prevPos > currPos) {
+        document.querySelector("#the-nav").style.top = "0";
+      } else {
+        document.querySelector("#the-nav").style.top = "-64px";
+      }
+      prevPos = currPos;
+    };
   }
 };
 </script>
@@ -57,8 +71,9 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  position: fixed;
   box-shadow: 0 4px 6px #33333322;
+  transition: top 200ms ease-in-out;
 }
 
 h1 {
@@ -80,5 +95,11 @@ h1 {
 
 .tilted {
   transform: rotate(45deg);
+}
+
+@media screen and (max-width: 420px) {
+  #icon-search {
+    left: 16px;
+  }
 }
 </style>

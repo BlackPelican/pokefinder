@@ -33,6 +33,7 @@ export default {
   box-shadow: 0 4px 6px #33333322;
   display: flex;
   margin-bottom: 32px;
+  border-radius: 8px;
 }
 
 .poke-card {

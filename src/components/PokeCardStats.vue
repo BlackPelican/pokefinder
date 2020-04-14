@@ -73,5 +73,6 @@ export default {
 .bar {
   padding-left: 16px;
   height: 16px;
+  border-radius: 4px;
 }
 </style>

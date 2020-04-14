@@ -74,7 +74,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 32px 0;
+  padding: 96px 0;
   background: var(--c-background);
   min-height: 100vh;
 }

@@ -24,6 +24,7 @@ export default {
   width: 240px;
   font-size: 14px;
   padding: 0 8px;
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 400px) {

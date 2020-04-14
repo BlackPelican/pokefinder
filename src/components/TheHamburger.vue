@@ -15,4 +15,10 @@ export default {
   right: 32px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 420px) {
+  #the-hamburger {
+    right: 16px;
+  }
+}
 </style>
