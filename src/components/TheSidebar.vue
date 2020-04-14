@@ -23,12 +23,12 @@ export default {
   data: function() {
     return {
       stats: [
-        { label: "HP", value: "0" },
-        { label: "ATK", value: "0" },
-        { label: "DEF", value: "0" },
-        { label: "SPATK", value: "0" },
-        { label: "SPDEF", value: "0" },
-        { label: "SPE", value: "0" }
+        { label: "HP", value: "" },
+        { label: "ATK", value: "" },
+        { label: "DEF", value: "" },
+        { label: "SPATK", value: "" },
+        { label: "SPDEF", value: "" },
+        { label: "SPE", value: "" }
       ]
     };
   },

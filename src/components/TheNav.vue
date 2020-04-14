@@ -10,7 +10,7 @@
       :class="{tilted: showSearchbarMobile}"
     />
     <h1 v-if="!showSearchbarMobile">PokéFinder</h1>
-    <TheHamburger @click.native="showSidebar" />
+    <TheHamburger @click.native="showSidebar" :class="{tiltedham: showSidebarB}" />
     <TheSearchbarMobile @searchUpdated="searchUpdated" v-if="showSearchbarMobile" />
   </nav>
 </template>
@@ -29,7 +29,8 @@ export default {
   },
   data: function() {
     return {
-      showSearchbarMobile: false
+      showSearchbarMobile: false,
+      showSidebarB: false
     };
   },
   methods: {
@@ -37,6 +38,7 @@ export default {
       this.$emit("searchUpdated", search);
     },
     showSidebar() {
+      this.showSidebarB = !this.showSidebarB;
       this.$emit("showSidebar");
     }
   },
@@ -101,6 +103,10 @@ h1 {
 
 .tilted {
   transform: rotate(45deg);
+}
+
+.tiltedham {
+  transform: rotate(90deg);
 }
 
 @media screen and (max-width: 420px) {
