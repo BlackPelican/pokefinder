@@ -46,22 +46,6 @@ export default {
     showSearchbar() {
       return window.innerWidth > 800;
     }
-  },
-  mounted() {
-    let prevPos = window.pageYOffset;
-
-    window.onscroll = () => {
-      let currPos = window.pageYOffset;
-
-      if (prevPos > currPos) {
-        document.querySelector("#the-nav").style.top = "0";
-        document.querySelector("#the-sidebar").style.top = "64px";
-      } else {
-        document.querySelector("#the-nav").style.top = "-64px";
-        document.querySelector("#the-sidebar").style.top = "-240px";
-      }
-      prevPos = currPos;
-    };
   }
 };
 </script>
