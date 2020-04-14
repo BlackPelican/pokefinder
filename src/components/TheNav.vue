@@ -54,11 +54,7 @@ export default {
 #the-nav {
   width: 100%;
   height: 64px;
-  background: linear-gradient(
-    to right,
-    var(--c-primary),
-    var(--c-primary-variant)
-  );
+  background: linear-gradient(to right, var(--c-primary), var(--c-primary));
   display: flex;
   justify-content: center;
   align-items: center;
