@@ -83,7 +83,7 @@ html {
   --c-surface: #ffffff;
   --c-on-dark: #333333ee;
   --c-on-light: #ffffff;
-  --w-poke-card: 560px;
+  --w-poke-card: 512px;
   --w-poke-card-identity: 200px;
   --w-poke-card-stats: 360px;
   --w-icons: 32px;

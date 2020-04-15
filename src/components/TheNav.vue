@@ -9,7 +9,7 @@
       @click="showSearchbarMobile = !showSearchbarMobile"
       :class="{tilted: showSearchbarMobile}"
     />
-    <h1 v-if="!showSearchbarMobile">PokéFinder</h1>
+    <h1 v-if="!showSearchbarMobile">PokéFinder.io</h1>
     <img id="logo" src="img/logo.svg" alt="Logo" />
     <TheHamburger @click.native="showSidebar" :class="{tiltedham: showSidebarB}" />
     <TheSearchbarMobile @searchUpdated="searchUpdated" v-if="showSearchbarMobile" />
@@ -66,9 +66,9 @@ export default {
 }
 
 h1 {
-  font-size: 34px;
+  font-size: 32px;
   color: var(--c-on-dark);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 #icon-search {
