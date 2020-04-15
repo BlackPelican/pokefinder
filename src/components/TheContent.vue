@@ -64,7 +64,7 @@ export default {
         "pikachu"
       ];
 
-      for (let i = 0; i < 251; i++) {
+      for (let i = 0; i < 386; i++) {
         let pokeName = pokeNames[i].toLowerCase();
         pokes.push({
           name: pokeName,
