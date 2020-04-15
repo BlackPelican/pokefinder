@@ -1,11 +1,11 @@
 <template>
   <div v-if="isMobile == false" class="poke-card">
-    <PokeCardIdentity :pokeName="pokeInfo.name" :pokeSprite="pokeInfo.sprite" />
-    <PokeCardStats :pokeStats="pokeInfo.stats.slice().reverse()" />
+    <PokeCardIdentity :pokeName="poke.name" :pokeSprite="poke.sprite" />
+    <PokeCardStats :pokeStats="poke.stats" />
   </div>
   <div v-else class="poke-square">
-    <PokeCardIdentity :pokeName="pokeInfo.name" :pokeSprite="pokeInfo.sprite" />
-    <PokeCardStats :pokeStats="pokeInfo.stats.slice().reverse()" />
+    <PokeCardIdentity :pokeName="poke.name" :pokeSprite="poke.sprite" />
+    <PokeCardStats :pokeStats="poke.stats" />
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     PokeCardStats
   },
   props: {
-    pokeInfo: Object,
+    poke: Object,
     isMobile: Boolean
   }
 };

@@ -1,11 +1,6 @@
 <template>
   <main v-if="pokes" id="the-content">
-    <PokeCard
-      v-for="(pokeInfo, i) in pokesFilteredInfo"
-      :key="i"
-      :pokeInfo="pokeInfo"
-      :isMobile="isMobile"
-    />
+    <PokeCard v-for="(poke, i) in pokesFiltered" :key="i" :poke="poke" :isMobile="isMobile" />
   </main>
   <main id="wrap-loader" v-else>
     <img id="loader" src="img/loader.svg" />
@@ -14,6 +9,7 @@
 
 <script>
 import PokeCard from "./PokeCard.vue";
+import { baseStats } from "../base-stats.js";
 
 export default {
   name: "TheContent",
@@ -25,62 +21,73 @@ export default {
     PokeCard
   },
   methods: {
-    statsMatch(poke) {
+    statsMatch(stats) {
       let match = true;
-      let arr = this.searchStats.slice().reverse();
 
-      for (let i = 0; i < 6; i++) {
-        if (poke.stats[i]["base_stat"] < parseInt(arr[i])) {
+      for (let i = 0; i < stats.length; i++) {
+        if (stats[i] < parseInt(this.searchStats[i])) {
           match = false;
         }
       }
 
       return match;
+    },
+    getSpecialNameLink(name) {
+      return name == "nidoran♂"
+        ? `https://projectpokemon.org/images/normal-sprite/nidoran_m.gif`
+        : name == "nidoran♀"
+        ? `https://projectpokemon.org/images/normal-sprite/nidoran_f.gif`
+        : name == "mr. mime"
+        ? `https://projectpokemon.org/images/normal-sprite/mr.mime.gif`
+        : name == "farfetch'd"
+        ? `https://projectpokemon.org/images/normal-sprite/farfetchd.gif`
+        : name == "pikachu"
+        ? `https://projectpokemon.org/images/normal-sprite/pikachu-kantocap.gif`
+        : `https://projectpokemon.org/images/shiny-sprite/gengar-mega.gif`;
     }
   },
   asyncComputed: {
     async pokes() {
-      const arr = [];
+      const pokes = [];
 
-      let result, json;
+      const response = await fetch(
+        `https://raw.githubusercontent.com/sindresorhus/pokemon/master/data/en.json`
+      );
 
-      for (let i = 1; i <= 251; i++) {
-        result = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`);
+      const pokeNames = await response.json();
 
-        json = await result.json();
-        const jsonString = JSON.stringify(json);
-        const jsonObj = JSON.parse(jsonString);
+      const specialNames = [
+        "farfetch’d",
+        "mr. mime",
+        "nidoran♀",
+        "nidoran♂",
+        "pikachu"
+      ];
 
-        arr.push(jsonObj);
+      for (let i = 0; i < 251; i++) {
+        let pokeName = pokeNames[i].toLowerCase();
+        pokes.push({
+          name: pokeName,
+          stats: baseStats[i].base,
+          sprite:
+            specialNames.includes(pokeName) == false
+              ? `https://projectpokemon.org/images/normal-sprite/${pokeName}.gif`
+              : this.getSpecialNameLink(pokeName)
+        });
       }
 
-      return arr;
+      return pokes;
     }
   },
   computed: {
     pokesFiltered() {
       if (this.pokes) {
         return this.pokes.filter(poke => {
-          return poke.name.includes(this.search) && this.statsMatch(poke);
+          return poke.name.includes(this.search) && this.statsMatch(poke.stats);
         });
       } else {
         return [];
       }
-    },
-    pokesFilteredInfo() {
-      return this.pokesFiltered.map(poke => {
-        return {
-          name: poke.name,
-          stats: poke.stats,
-          //sprite: poke.sprites["front_default"]
-          sprite: poke.name.includes("-")
-            ? `https://projectpokemon.org/images/normal-sprite/${poke.name.replace(
-                "-",
-                "_"
-              )}.gif`
-            : `https://projectpokemon.org/images/normal-sprite/${poke.name}.gif`
-        };
-      });
     },
     isMobile() {
       return window.innerWidth < 480;

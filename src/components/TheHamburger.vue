@@ -10,9 +10,10 @@ export default {
 
 <style scoped>
 #the-hamburger {
-  height: 32px;
+  height: var(--w-icons);
   position: absolute;
   right: 32px;
+  transition: transform 200ms ease-in-out;
   cursor: pointer;
 }
 

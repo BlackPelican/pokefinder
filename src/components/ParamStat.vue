@@ -33,6 +33,7 @@ export default {
 
 .stat {
   font-size: 14px;
+  color: var(--c-on-dark);
 }
 
 input {
@@ -40,10 +41,9 @@ input {
   border-bottom: 1px solid var(--c-secondary);
   text-align: center;
   opacity: 0.5;
-
   padding: 0 4px;
   font-size: 16px;
-  width: 32px;
+  width: 40px;
   height: 24px;
   color: var(--c-on-dark);
   font-weight: 600;

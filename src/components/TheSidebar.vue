@@ -9,6 +9,7 @@
         @valueUpdated="valueUpdated"
       />
     </div>
+    <span @click="resetStats" id="stat-reset">Reset</span>
   </div>
 </template>
 
@@ -47,6 +48,11 @@ export default {
       });
 
       this.$emit("searchStatsUpdated", arr);
+    },
+    resetStats() {
+      this.stats.forEach(stat => {
+        stat.value = "";
+      });
     }
   }
 };
@@ -57,7 +63,7 @@ export default {
   width: 240px;
   background: var(--c-surface);
   box-shadow: 0 4px 6px #33333322;
-  height: 240px;
+  height: 280px;
   position: fixed;
   right: 0;
   top: 64px;
@@ -66,5 +72,23 @@ export default {
   justify-content: center;
   align-items: center;
   transition: top 200ms ease-in-out;
+  flex-direction: column;
+}
+
+.wrap-param-stats {
+  margin-bottom: 16px;
+}
+
+#stat-reset {
+  text-decoration: underline;
+  font-size: 14px;
+  color: var(--c-on-dark);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#stat-reset:hover {
+  opacity: 0.7;
 }
 </style>

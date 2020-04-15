@@ -51,7 +51,7 @@ export default {
         if (prevPos > currPos) {
           document.getElementById("the-sidebar").style.top = "64px";
         } else {
-          document.getElementById("the-sidebar").style.top = "-240px";
+          document.getElementById("the-sidebar").style.top = "-280px";
         }
       }
       prevPos = currPos;
@@ -86,9 +86,11 @@ html {
   --w-poke-card: 560px;
   --w-poke-card-identity: 200px;
   --w-poke-card-stats: 360px;
+  --w-icons: 32px;
 }
 
-input {
+input,
+button {
   font-family: "Source Sans Pro";
   border: 0;
 }
@@ -112,15 +114,11 @@ li {
   }
 }
 
-@media screen and (max-width: 600px) {
-  html {
-  }
-}
-
 @media screen and (max-width: 420px) {
   html {
     --w-poke-card: 320px;
     --w-poke-card-identity: 160px;
+    --w-icons: 24px;
   }
 }
 

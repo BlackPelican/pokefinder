@@ -10,10 +10,10 @@
     </div>
     <div class="stat__bars">
       <div v-for="(stat, i) in pokeStats" :key="i">
-        <span class="value">{{stat["base_stat"]}}</span>
+        <span class="value">{{stat}}</span>
         <span
           class="bar"
-          :style="{width: `${stat['base_stat']}px`, background: stat['base_stat'] >= 130 ? '#25ced1dd' : stat['base_stat'] >= 100 ? '#6bf178dd' : stat['base_stat'] >= 80 ? '#ffe74cdd' : stat['base_stat'] >= 60 ? '#f0a202dd' : '#ef5350dd'}"
+          :style="{width: `${stat}px`, background: stat >= 130 ? '#25ced1dd' : stat >= 100 ? '#6bf178dd' : stat >= 80 ? '#ffe74cdd' : stat >= 60 ? '#f0a202dd' : '#ef5350dd'}"
         ></span>
       </div>
     </div>
