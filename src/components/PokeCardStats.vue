@@ -58,6 +58,10 @@ export default {
   font-size: 14px;
 }
 
+.stat__names span {
+  opacity: 0.75;
+}
+
 .stat__bars div {
   display: flex;
   align-items: center;
